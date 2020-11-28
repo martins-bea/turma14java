@@ -3,26 +3,22 @@ programa
 	
 	funcao inicio()
 	{
-		//  sistema que leia a idade de uma pessoa expressa em anos, 
-		// meses e dias e mostre-a expressa apenas em dias. 
+		inteiro idadeAnos, idadeMeses, idadeDias
+	 
+		escreva ("Sua idade em anos, meses e dia:\nAnos:" )
+       	leia (idadeAnos)
 
-		inteiro dias = 365
-		inteiro meses = 12
-		inteiro idade, resultadodias,resultadomeses
+        	escreva ("Meses:")
+        	leia (idadeMeses)
+
+	     escreva ("Dias:") 
+       	leia (idadeDias)
+       	
+       	inteiro idadeDiasTotal= (idadeAnos * 365 + idadeMeses * 30 + idadeDias)
+        	escreva ("Sua idade em dias é de: ",idadeDiasTotal)
+
 		
-		escreva ("Escreva sua idade: ") 
-		leia(idade) 
-		escreva ("\n")
-		
-		resultadomeses = idade * meses	
-		escreva ("\n")	
-		
-		resultadodias = idade * dias
-		escreva ("Você está vivo há " +resultadodias+" dias")
-		escreva ("\n")
-		
-		
-		
+        
 	}
 }
 /* $$$ Portugol Studio $$$ 
@@ -30,7 +26,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 238; 
+ * @POSICAO-CURSOR = 264; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
