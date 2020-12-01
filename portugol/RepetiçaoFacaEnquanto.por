@@ -3,20 +3,17 @@ programa
 	
 	funcao inicio()
 	{
-		
+		inteiro x, acm=0
 
-		real raio, area
-		const real pi =3.14 
-		
+		faca{
 
-		escreva("Digite o raio do circulo: ")
-		leia (raio)
-	
-		area= pi*(raio*raio)
-	
-		escreva ("Area do circulo é: "+area)
-
-
+			escreva("Entre com um valor:")
+			leia(x)
+			acm=acm+x
+			
+		}enquanto (x!=0)
+		escreva ("Eu acumulei:",acm)
+		0
 	}
 }
 /* $$$ Portugol Studio $$$ 
@@ -24,7 +21,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 202; 
+ * @POSICAO-CURSOR = 182; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;

@@ -1,5 +1,6 @@
 programa
 {
+	inclua biblioteca Matematica --> mat
 	
 	funcao inicio()
 	{
@@ -8,14 +9,18 @@ programa
 		real raio, area
 		const real pi =3.14 
 		
-
+		escreva("---- Cálculo da área do circulo ---- ")
+		escreva("\n")
+		
 		escreva("Digite o raio do circulo: ")
 		leia (raio)
 	
-		area= pi*(raio*raio)
-	
-		escreva ("Area do circulo é: "+area)
+		area= mat.PI * (mat.potencia(raio, 2)) 
+		
+		//area = pi*(raio*raio)
 
+		escreva("A área do circulo é: " + mat.arredondar(area,2))
+		
 
 	}
 }
@@ -24,7 +29,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 202; 
+ * @POSICAO-CURSOR = 115; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;

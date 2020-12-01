@@ -1,22 +1,24 @@
 programa
 {
+	inclua biblioteca Util
 	
 	funcao inicio()
 	{
-		
+		inteiro contador =10 
 
-		real raio, area
-		const real pi =3.14 
-		
+		enquanto (contador > 0){
 
-		escreva("Digite o raio do circulo: ")
-		leia (raio)
-	
-		area= pi*(raio*raio)
-	
-		escreva ("Area do circulo é: "+area)
+			limpa()
+			
+			escreva("Contagem regressiva...", contador)
+			contador = contador-1 
+			Util.aguarde(2000)
+		}
 
+		limpa()
+		escreva ("Buuuuuuuuuuum!!!")
 
+			
 	}
 }
 /* $$$ Portugol Studio $$$ 
@@ -24,7 +26,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 202; 
+ * @POSICAO-CURSOR = 218; 
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
  * @FILTRO-ARVORE-TIPOS-DE-DADO = inteiro, real, logico, cadeia, caracter, vazio;
