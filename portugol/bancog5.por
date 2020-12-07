@@ -4,9 +4,9 @@ programa
         inteiro opcao
         escreva(" \n▓▓▓▓▓▓▓▓▓▓▓▓▓ BEM VINDO AO G5 BANK ▓▓▓▓▓▓▓▓▓▓▓▓▓","\n")
         escreva("=================================================")
-        escreva("\n DIGITE O NUMERO DA CONTA : ")
+        escreva("\nDIGITE O NUMERO DA CONTA: \n")
         leia(numeroUsuario)
-        escreva("\n DIGITE O CPF : ")
+        escreva("\nDIGITE O CPF11: ")
         leia(cpfUser)
         limpa()
 
@@ -30,7 +30,7 @@ programa
     funcao menu()
     {
         inteiro opcao
-        escreva(" \n▓▓▓▓▓▓▓▓▓▓▓▓ BEM VINDO AO G5 BANK ▓▓▓▓▓▓▓▓▓▓▓▓ ","\n")
+        escreva(" \n▓▓▓▓▓▓▓▓▓▓▓▓▓ BEM VINDO AO G5 BANK ▓▓▓▓▓▓▓▓▓▓▓▓▓","\n")
         escreva("=================================================")
         escreva("\n ESCOLHA UMA OPERAÇÃO : ")
         escreva("\n1- SALDO ▶")
@@ -177,7 +177,7 @@ programa
         	movimento++
        	saldo = saldo + dinheiro
         	saldoatual = saldo
-        	//credito = credito-saldo
+        	credito = credito-saldo
         	escreva(" VOCÊ FEZ ", movimento," MOVIMENTO !!! ")
         	}
         	
@@ -199,7 +199,7 @@ programa
  * Esta seção do arquivo guarda informações do Portugol Studio.
  * Você pode apagá-la se estiver utilizando outro editor.
  * 
- * @POSICAO-CURSOR = 682; 
+ * @POSICAO-CURSOR = 2057; 
  * @DOBRAMENTO-CODIGO = [159];
  * @PONTOS-DE-PARADA = ;
  * @SIMBOLOS-INSPECIONADOS = ;
