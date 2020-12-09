@@ -1,8 +1,10 @@
-package exercicios;
+package exercicio;
 
 import java.util.Scanner;
 
-public class lista3exercicio2Para {
+public class lista3exercicio2para  {
+	
+
 
 	public static void main(String[] args) {
 		int numero;

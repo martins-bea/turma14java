@@ -1,11 +1,12 @@
-package exercicios;
+package exercicio;
+
 import java.util.Scanner;
 
 
-public class lista3Exercicio2 {
+public class lista3exercicio2enquanto {
 
 			    public static void main(String[] args) {
-			        Scanner scan = new Scanner(System.in);
+			       Scanner scan = new Scanner(System.in);
 
 			        int numero;
 

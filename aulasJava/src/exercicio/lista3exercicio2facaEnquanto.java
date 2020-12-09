@@ -1,8 +1,9 @@
-package exercicios;
+package exercicio;
 
 import java.util.Scanner;
 
-public class lista3exercicio2FacaEnquanto {
+public class lista3exercicio2facaEnquanto {
+
 
     public static void main(String[] args) {
 
