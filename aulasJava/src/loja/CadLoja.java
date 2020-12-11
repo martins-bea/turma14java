@@ -11,7 +11,7 @@ public class CadLoja {
 
 
 		inserirLinha(80,"■");
-		System.out.println("                             ꧁Cherin de Capim꧂");
+		System.out.println("                             CHEIRIN  ");
 		inserirLinha(80,"■");
 		System.out.println();
 
