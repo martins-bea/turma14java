@@ -1,24 +1,427 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class bancoG5 {
+	static Scanner leia = new Scanner(System.in);
+	static Random random = new Random();
 
+	// VETORES
+
+	static int tipoConta[] = new int[40]; // IDENTIFICAR O TIPO DE CONTA DE CADA CLIENTE;
+	static String nomeCLientes[] = { "Allen de Lima Vieira", "André de Brito Silva da Costa", "Bárbara Liboni Guerra",
+			"Beatriz Martins", "Beymar Jhoel Acapa Lima", "Breno Nogueira Botelho Noccioli",
+			"Daniel Augusto Gomes Ferreira Filho", "Danilo Mendes Ferreira", "Danilo Pereira da Silva",
+			"Davi Silva Vieira", "Diego Vinicio da Silva Nascimento", "Erick Costa Ferreira", "Ewerton Inacio Lima",
+			"FERNANDA AGAPITO", "Fernanda Barbosa Ferraz", "Francisco José Pires",
+			"Gabriel Sérgio Nascimento Santos Gonçalves", "Gideão da Silva Idelfonso", "GILSON AMORIM DE MATOS",
+			"Guilherme Gonçalves da Silva", "Gustavo Rabelo Teles", "HELOISA BEATRIZ DE OLIVEIRA COSTA",
+			"Igor Mateus Queiroz Gato", "Isabel Emiko Yamakawa Oyama", "Jackeline Akemi de Moura",
+			"José Jorge Hauck Júnior", "Juliana Santos André", "Kélven Cleiton de Araújo Brandão", "Laís Lima Santos",
+			"Lucas anseloni barros", "Lucas Gonçalves da Silva", "Luis felipe da silva",
+			"Luiz Felipe da Silva Magalhães", "Marcos Eduardo Gomes Gonçalves", "Micaely da Silva Lima",
+			"Rafaela Oliveira Silva", "Tiago dos Santos Martins", "Verônica Navarro Almena", "Vinicius Alves Miranda",
+			"Gabriel Enrique Cabral Silva" }; // NOME DOS CLIENTES
+	static int controle[] = new int[40]; // SERVE PARA SABER QUAL CONTA PERTENCE AO CLIENTE EX. ERICK - CONTA POUPANÇA.
+	static char sexoClientes[] = { 'M', 'M', 'F', 'F', 'M', 'M', 'M', 'M', 'M', 'M', 'M', 'M', 'M', 'F', 'F', 'M', 'M',
+			'M', 'M', 'M', 'M', 'F', 'M', 'F', 'F', 'M', 'F', 'M', 'F', 'M', 'M', 'M', 'M', 'M', 'F', 'F', 'M', 'F',
+			'M', 'M' };
+	static int numConta[] = new int[40]; // ARMAZENA A CONTA DE CADA CLIENTE
+	static char escolha;
+	static double saldo[] = new double[40]; // ARMAZENA O SALDO DE CADA CLIENTE
+	static int talao[] = new int [40];
+	static int totalTalao[]= new int [40];
+
+	// fim VETORES
+
+	// VARIAVEIS
+
+	static int sorteio; // SERVE PARA SORTEAR AS CONTAS DE CADA CLIENTE
+	static int volta = 0; // PARA VOLTAR A TELA
+	static int pesquisa = -1; // VARRER O VETOR DOS NOMES;
+	static int numeroConta; // NUMERO DA CONTA DO CLIENTE
+	static double saldoInicial = 0; // SALDO INICIAL
+	static double credito = 0.0; // CRÉDITO = DEPOSITO INICIAL
+	static double debito = 0.0; // CRÉDITO = SAQUE INICIAL
+	static double emprestimoEmpresa = 10.000; // EMPRESTIMO EMPRESA
+	static int escolhido = 0; // USADA PARA ENCONTRAR A CONTA DESEJADA;
+	static int opcao = 0; // PARA OPCAO DO MENU INTERNO DE CADA FUNÇAO
+	static int escolhaUsuario = 0;
+	static int opcaoSimouNao; // CRIADA PARA MOVIMENTO SIM OU NAO
+	static int x;
 	
-	public static void main(String[] args) {
-		
-		Scanner leia = new Scanner(System.in);
-		
-		//BEATRIZ -VETOR DE CONTA - INT  [1-40] - 40 POSI��ES
-		
-		int conta[] = new int[40];
-		
+
+	// fimVARIAVEIS
+
+	// o programa mesmo é aqui
+
+	public static void main(String[] args) {// COMEÇO MAIN
+
+		// VERIFICAÇÃO DE CONTA COM NOME E TIPO DE CONTA.
+
+		telaInicial();
+		pularLinha();
+
 		for (int x = 0; x < 40; x++) {
-			conta[x]= (x+1);
-			
-			System.out.println(conta[x]);
-			
+			sorteio = random.nextInt(5) + 1;
+			controle[x] = (x + 1);
+			tipoConta[x] = sorteio;;
+			numConta[x] = x + 1;
+			talao [x]= 3;
+			totalTalao [x]=0;
+
 		}
-	
+
+		// VERIFICAÇÃO DE GENERO
+
+		for (int indice = 0; indice < 40; indice++) {
+			if (numConta[indice] == numeroConta) {
+				pesquisa = indice;
+			}
+		}
+
+		if ((sexoClientes[pesquisa] == 'M')) {
+			System.out.println("Seja bem vindo,");
+		} else if ((sexoClientes[pesquisa] == 'F')) {
+			System.out.println("Seja bem vinda");
+		} else {
+			System.out.println("/n Erro. Tente novamente, ");
+		}
+
+		// sorteio contas clientes
+
+		for (x = 0; x < 40; x++) {
+			if (numeroConta == controle[x]) {
+				if (sorteio == 1) {
+					System.out.printf("\n%s ", nomeCLientes[x]);
+					System.out.println("\n Conta Poupança");
+
+					escolhido = x;
+				} else if (sorteio == 2) {
+					System.out.printf("%s ", nomeCLientes[x]);
+					System.out.println("\n Conta Corrente");
+					escolhido = x;
+				} else if (sorteio == 3) {
+					System.out.printf("%s", nomeCLientes[x]);
+					System.out.println("\n Conta Especial");
+
+					escolhido = x;
+				} else if (sorteio == 4) {
+					System.out.printf("%s ", nomeCLientes[x]);
+					System.out.println("\n Conta Empresa");
+					escolhido = x;
+				} else {
+					System.out.printf("%s ", nomeCLientes[x]);
+					System.out.println("\n Conta Universitária");
+					escolhido = x;
+				}
+
+			}
+
+		}
+
+		switch (sorteio) {
+		case 1:
+			contaEmpresa();
+			// System.out.println("Conta 1 - TESTE USO PARA FUNÇÃO POUPANÇA");
+			// contaPoupança()
+			break;
+		case 2:
+			contaCorrente();
+			// System.out.println(" Conta 2 - TESTE USO PARA FUNÇÃO CORRENTE");
+			// contaCorrente()
+			break;
+		case 3:
+			contaEmpresa();
+			// System.out.println(" Conta 3 - TESTE USO PARA FUNÇÃO ESPECIAL");
+			// contaEspecial()
+			break;
+		case 4:
+			contaEmpresa();
+			break;
+		case 5:
+			contaEmpresa();
+			// System.out.println(" Conta 5 - TESTE USO PARA FUNÇÃO UNIVERSITARIO");
+			// contaUniversitaria()
+			break;
+		}
+
+	}// FIM MAIN
+
+	// FUNCOES
+
+	public static void linha() {
+		for (byte x = 0; x < 35; x++) {
+			System.out.print("■");
+		}
 	}
 
+	public static void pularLinha() {
+		System.out.print("\n");
+	}
 
-}
+	public static void sair() {
+		linha();
+		System.out.println(" AGRADECEMOS POR USAR O G5 BANK, ATÉ A PROXIMA ");
+		linha();
+		telaInicial();
+	}
+
+	public static void voltar() {
+		System.out.println(" [1] VOLTAR [2]SAIR ");
+		volta = leia.nextInt();
+		if (volta == 1) {
+			telaInicial();
+		} else if (volta == 2) {
+			sair();
+		} else {
+			System.out.println("Voce digitou um numero invalido !!!");
+		}
+	}
+
+	public static void telaInicial() {
+		linha();
+		System.out.print("\n              BANCO G5\n");
+		linha();
+		System.out.print("\nDigite o NÚMERO DA CONTA: ");
+		numeroConta = leia.nextInt();
+		linha();
+	}
+
+	public static void contaEmpresa() {
+		linha();
+		System.out.println("\nESCOLHA UMA OPERAÇÃO : ");
+		System.out.println("[1] MOVIMENTAÇÃO");
+		System.out.println("[2] SALDO");
+		System.out.println("[3] SAIR");
+		linha();
+		opcao = leia.nextInt();
+
+		switch (opcao) {
+		case 1:
+
+			for (x = 0; x < 10; x++) {
+
+				System.out.println("\nDeseja iniciar os movimentos: [1]Sim ou [2] Não");
+				opcaoSimouNao = leia.nextInt();
+
+				if (opcaoSimouNao == 1) {
+					// CADA UM VAI TER QUE ALTERAR DEVIDO MUDANÇAS DE CONTA
+
+					System.out.println("Seu saldo é:" + saldo[numeroConta]);
+					linha();
+					System.out.println("\nVOCE DESEJA FAZER [1] CRÉDITO [2]DEBITO [3]EMPRESTIMO");
+					escolhaUsuario = leia.nextInt();
+
+					// IF OARA CREDITO = DEPOSITO;
+
+					if (escolhaUsuario == 1) {
+						System.out.println("Quanto você deseja DEPOSITAR?");
+						credito = leia.nextDouble();
+
+						if (credito > 0.0) {
+							for (int x = 0; x < 40; x++) {
+								saldo[x] = saldo[x] + credito;
+							}
+							System.out.printf("Seu saldo atual é %f", saldo[numeroConta]);
+							voltar();
+						} else {
+							System.out.println("Não é possível realizar o débito.");
+						}
+
+					}
+
+					// IF PARA DEBITO = SAQUE
+
+					else if (escolhaUsuario == 2) {
+
+						System.out.println("Quanto você deseja RETIRAR?");
+						debito = leia.nextDouble();
+
+						if (debito > 0.0) {
+							for (int x = 0; x < 40; x++) {
+								saldo[x] = saldo[x] - debito;
+							}
+							System.out.printf("Seu saldo atual é %f", saldo[numeroConta]);
+						}
+
+						else if (debito <= 0) {
+							System.out.println("Não é possível realizar a retirada.");
+						}
+
+					} else {
+						System.out.println("Voce digitou um número invalido !!!");
+					}
+
+					voltar();
+
+				} else if (opcaoSimouNao == 2)
+				// AQUI NÃO MUDA
+				{
+					sair();
+
+				} else {
+					System.out.println("Voce digitou um numero invalido !!!");
+				}
+
+			}
+
+			break;
+
+		case 2:
+
+			System.out.printf("Seu saldo atual é %f", saldo[numeroConta]);
+			voltar();
+			linha();
+
+			break;
+
+		case 3:
+			sair();
+			break;
+		}
+	}
+
+	public static void contaCorrente() {
+		linha();
+		System.out.println("\nESCOLHA UMA OPERAÇÃO : ");
+		System.out.println("[1] MOVIMENTAÇÃO");
+		System.out.println("[2] SALDO");
+		System.out.println("[3] SAIR");
+		linha();
+		opcao = leia.nextInt();
+
+		switch (opcao) {
+		case 1:
+
+			for (x = 0; x < 10; x++) {
+
+				System.out.println("\nDeseja iniciar os movimentos: [1]Sim ou [2] Não");
+				opcaoSimouNao = leia.nextInt();
+
+				if (opcaoSimouNao == 1) {
+					// CADA UM VAI TER QUE ALTERAR DEVIDO MUDANÇAS DE CONTA
+
+					System.out.println("Seu saldo é:" + saldo[numeroConta]);
+					linha();
+					System.out.println("\nVOCE DESEJA FAZER: \n[1] DEPOSITO \n[2]DEBITO \n[3]TALÃO");
+					escolhaUsuario = leia.nextInt();
+
+					// IF PARA CREDITO = DEPOSITO;
+
+					if (escolhaUsuario == 1) {
+						System.out.println("Quanto você deseja DEPOSITAR?");
+						credito = leia.nextDouble();
+
+						if (credito > 0.0) {
+							for (int x = 0; x < 40; x++) {
+								saldo[x] = saldo[x] + credito;
+							}
+							System.out.printf("Seu saldo atual é %f", saldo[numeroConta]);
+							voltar();
+						} else {
+							System.out.println("Não é possível realizar o débito.");
+						}
+
+					}
+
+					// IF PARA DEBITO = SAQUE
+
+					else if (escolhaUsuario == 2) {
+
+						System.out.println("Quanto você deseja RETIRAR?");
+						debito = leia.nextDouble();
+
+						if (debito > 0.0) {
+							for (int x = 0; x < 40; x++) {
+								saldo[x] = saldo[x] - debito;
+							}
+							System.out.printf("Seu saldo atual é %f", saldo[numeroConta]);
+						}
+
+						else if (debito <= 0) {
+							System.out.println("Não é possível realizar a retirada.");
+						}
+
+					} 
+					
+					else if (escolhaUsuario == 3) {
+						
+					talao ();	
+												
+					}
+					
+					
+					else {
+						System.out.println("Voce digitou um número invalido !!!");
+					}
+
+					voltar();
+
+				} else if (opcaoSimouNao == 2)
+				// AQUI NÃO MUDA
+				{
+					sair();
+
+				} else {
+					System.out.println("Voce digitou um numero invalido !!!");
+				}
+
+			}
+
+			break;
+
+		case 2:
+
+			System.out.printf("Seu saldo atual é %f", saldo[numeroConta]);
+			voltar();
+			linha();
+
+			break;
+
+		case 3:
+			sair();
+			break;
+		}
+
+	}
+	
+	public static void talao() {
+		
+
+		int tipo;
+		char opcaoTalao;
+		int qntdTalao=0;
+				
+		System.out.println("IMPRESSÃO DE TALÃO: S para Sim ou N para Não: ");
+		opcaoTalao = leia.next().toUpperCase().charAt(0);
+		while (opcaoTalao != 'S' && opcaoTalao != 'N') {
+			System.out.println("\nTransação inválida! Tente novamente. ");
+			opcaoTalao = leia.next().toUpperCase().charAt(0);
+		}
+		System.out.println("insira a quantidade de talões desejada: ");
+		qntdTalao = leia.nextInt();
+		while (qntdTalao > 3 || qntdTalao < 0) {
+			System.out.println("Quantidade de talões inválida. Insira uma nova quantidade:");
+			qntdTalao = leia.nextInt();
+		}
+		while (qntdTalao > talao[numeroConta]) {
+			System.out.printf("ATENÇÃO: Você possui  %d talões disponíveis no momento. Insira a quantidade desejada:", talao[numeroConta]);
+			qntdTalao = leia.nextInt();
+		} 
+		
+		talao[numeroConta] = talao[numeroConta]-qntdTalao;
+		totalTalao[numeroConta]=totalTalao[numeroConta] + qntdTalao;
+		
+		if (talao[numeroConta]==0) {
+			talao[numeroConta]=3;
+		}
+
+		System.out.printf("A quantidade impressa de talão hoje é de: %d\n", qntdTalao);
+		System.out.printf("A quantidade impressa total: %d\n", totalTalao[numeroConta]);
+		System.out.printf("Obrigado por usar nosso banco");
+
+	}
+	
+	// FIM FUNCOES
+
+}// FIM CÓDIGO

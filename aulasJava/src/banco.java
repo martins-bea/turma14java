@@ -82,16 +82,18 @@ public class banco
 			}
   	  
   	  if((sexoClientes[pesquisa] == 'M')) {
-  		  System.out.printf("Seja bem vindo, " + nommeCLientes[pesquisa]);
+  		  System.out.printf("\nSeja bem vindo, " + nommeCLientes[pesquisa]+"\n");
   	  }
         else if ((sexoClientes[pesquisa] == 'F')) {
-      	  System.out.println("Seja bem vinda, " + nommeCLientes[pesquisa]);
+      	  System.out.println("\nSeja bem vinda, " + nommeCLientes[pesquisa]+"\n");
       	  
         } else {
             System.out.println( "Erro");
         }
 	}
-	
+	public static void contaCorrente() {
+		
+	}
 	public static void menuPrincipal()
 	{
 		    int tipo =0;
