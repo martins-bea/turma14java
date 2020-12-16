@@ -1,7 +1,7 @@
 import java.util.Random;
 import java.util.Scanner;
 
-public class bancoG5final {
+	public class bancoG5final {
 	static Scanner leia = new Scanner(System.in);
 	static Random random = new Random();
 
