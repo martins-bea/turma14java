@@ -1,0 +1,24 @@
+package loja;
+
+public abstract class CadastroPessoa {
+
+	//atributos
+	private String nome;
+	private char genero;
+	private int dataNasc;
+	
+	//construtor
+	public CadastroPessoa(String nome, char genero, int dataNasc) {
+		super();
+		this.nome = nome;
+		this.genero = genero;
+		this.dataNasc = dataNasc;
+	}
+	
+	//metodo
+	public void voltaIdade() {
+		
+	}
+	
+	
+}

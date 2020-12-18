@@ -7,8 +7,8 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="import java.util.Random;"/>
 			<item value="package loja;"/>
+			<item value="import java.util.Random;"/>
 		</list>
 		<list key="replacehistory">
 		</list>

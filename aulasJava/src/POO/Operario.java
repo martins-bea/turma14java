@@ -15,7 +15,7 @@ package POO;
 		}
 
 		public double getComissao() {
-			return comissao;;
+			return comissao;
 		}
 
 		public void setComissao(double comissao) {
