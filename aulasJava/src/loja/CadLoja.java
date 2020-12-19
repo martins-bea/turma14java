@@ -1,6 +1,8 @@
 package loja;
 
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CadLoja {
 
@@ -8,39 +10,44 @@ public class CadLoja {
 
 	{
 		Scanner leia = new Scanner(System.in);
-
+		List<Produtos> ListaProdutos = new ArrayList();
+		List<Produtos> Carrinho = new ArrayList();
+		
 		// Variaveis
 
-		int estoque[] = new int[10];
-		int qntdCompra = 0;
-		int carrinho[] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-		int qntd[] = { 10, 10, 10, 10, 10, 10, 10, 10, 10, 10 };
-		double precoUnitarios[] = { 10, 10, 10, 10, 10, 10, 15, 15, 15, 15 };
-		double precoTotal;
-		char sOUn = 's', continuaCompra;
-		int codigos[] = new int[10];
-		String produtos[] = { " Capim-Limão", " Laranja", " Lavanda", " Doce", " Cravo&Canela", "Floral", " Maracujá",
-				" Algodão", " Eucalipto", " Soft" };
-		int produtoEscolhido;
-		String escolha; 
-		String compararProduto; // para usar no equals
-
+	
+		int quantidadeVenda = 0, notaFiscal=20200;
+		String produtoEscolhido; 
+		int anoAtual=2020;
+		double valorCompra=0;
+		char continuaCompra;
 		
 		
+		//ARRAYLIST AQUI ListaProdutos.add(new Produto("Ar-01", "Capim-Limão", 10.00, 10))
+		
+		ListaProdutos.add(new Produtos("AR01", "Aroma Capim-Limão", 10.00, 10));
+		ListaProdutos.add(new Produtos("AR02", "Aroma Laranja    ", 10.00, 10));
+		ListaProdutos.add(new Produtos("AR03", "Aroma Lavanda    ", 10.00, 10));
+		ListaProdutos.add(new Produtos("AR04", "Aroma Doce       ", 10.00, 10));
+		ListaProdutos.add(new Produtos("AR05", "Aroma Cravo&Canela", 10.00, 10));
+		ListaProdutos.add(new Produtos("AR06", "Aroma Floral      ", 10.00, 10));
+		ListaProdutos.add(new Produtos("AR07", "Aroma Camomila    ", 10.00, 10));
+		ListaProdutos.add(new Produtos("AR08", "Aroma Algodão     ", 10.00, 10));
+		ListaProdutos.add(new Produtos("AR09", "Aroma Eucalipto   ", 10.00, 10));
+		ListaProdutos.add(new Produtos("AR10", "Aroma Soft        ", 10.00, 10));
 		
 		
 		inserirLinha(80, "■");
-		System.out.println("\n                               CHEIRIN DE CAPIM \n");
+		System.out.println("\n                          ꕥ CHEIRIN DE CAPIM ꕥ \n");
 		inserirLinha(80, "■");
 		System.out.println();
 
-		System.out.println("         █                [1] ▶ COMPRAR PRODUTOS                  █");
-		System.out.println("         █                [2] ▶ GERENCIAR ESTOQUE                 █");
-		System.out.println("         █                [3] ▶ SAIR                              █");
+		System.out.println("                        [1] ▶ COMPRAR PRODUTOS                ");
+		System.out.println("                        [2] ▶ GERENCIAR ESTOQUE                ");
+		System.out.println("                        [3] ▶ SAIR                             ");
 
 		System.out.print(" \n");
-		inserirLinha(80, "■");
-		System.out.print("\n                              DIGITE A OPÇÃO:\n\n");
+		System.out.print("\n                          DIGITE A OPÇÃO:\n\n");
 
 		inserirLinha(80, "■");
 		System.out.print(" \n");
@@ -51,16 +58,95 @@ public class CadLoja {
 
 		case '1':
 			leia.nextLine();
-			System.out.print("Por favor informe o seu nome: ");
+			System.out.print("Realize seu cadastro!\n");
+			System.out.print("\nNome: ");
 			String nomeCliente = leia.nextLine();
-			inserirLinha(80, "■");
-			System.out.print("Você se define como M-masculino, F-feminino ou O-outro :");
+			System.out.print("\nGênero: M-masculino, F-feminino ou O-outro:");
 			char generoCliente = leia.next().toUpperCase().charAt(0);
+			System.out.printf("\nAno de nascimento:");
+			int dataNasc = leia.nextInt();
+			System.out.println("\nCPF:");
+			String CPF = leia.next();
 			inserirLinha(80, "■");
-			System.out.println(boasVindas(generoCliente, nomeCliente));
+			Cliente Fulano = new Cliente(nomeCliente, generoCliente, dataNasc,CPF); // construtor : (String nome, char genero, int dataNasc, String cpf)
+			// set altera : Fulano.setNome("Bea");
+			
+			
+			System.out.println(boasVindas(Fulano.getGenero(), nomeCliente));
+			System.out.println("\nSua idade é:"+Fulano.retornaIdade(anoAtual));
+			System.out.println("\n                         CONFIRA NOSSOS PRODUTOS:");
+			
 			inserirLinha(80, "■");
+			
+			do {
+				
+			System.out.println("CÓDIGO \t      PRODUTO \t       ESTOQUE     R$"  );
+			
+			for(Produtos ProdutosLoja:ListaProdutos) {
+				System.out.printf("%s \t %s \t %d \t %.2f \n",ProdutosLoja.getcodigoProduto(), ProdutosLoja.getnomeProduto(), ProdutosLoja.getestoqueProduto(), ProdutosLoja.getprecoUnidade(),"\n");
+			}
+			inserirLinha(80, "■");
+			System.out.printf("\nInsira o código do produto para adicioná-lo ao carrinho:");
+			produtoEscolhido = leia.next().toUpperCase();
+			System.out.printf("\nInsira a quantidade desejada:");
+			quantidadeVenda= leia.nextInt();
+			
+			for (Produtos ProdutosLoja:ListaProdutos) {
+				if (produtoEscolhido.equals(ProdutosLoja.getcodigoProduto())) {
+				
+					System.out.println("\nVocê selecionou: "+ quantidadeVenda+ " unidades de: " +ProdutosLoja.getnomeProduto());
+				
+				if	(quantidadeVenda <= ProdutosLoja.getestoqueProduto()) {
+					
+					ProdutosLoja.subtraiEstoque(quantidadeVenda);
+					valorCompra += quantidadeVenda*ProdutosLoja.getprecoUnidade();
+					
+					System.out.println("\nO valor total é R$: "+ valorCompra);
+					inserirLinha(80, "■");
+					
+					Carrinho.add(new Produtos(ProdutosLoja.getnomeProduto(), ProdutosLoja.getprecoUnidade()));
+													
+				}
+			}
+			
+		}
+			
+				
+			
+			System.out.println("Deseja continuar? [S] para Sim, [N] para Não: ");
+			continuaCompra= leia.next().toUpperCase().charAt(0); 
+			
+			if (continuaCompra == 'N') {
+				
+				
+				//
+				
+				
+				notaFiscal++;
+				
+				/*inserirLinha(80, "■");
+				System.out.printf("\n           EMISSÃO DE CUPOM FISCAL Nº: %d\n\n", notaFiscal);
+				inserirLinha(80, "■");*/
+				inserirLinha(80, "■");
+				System.out.println("               FORMA DE PAGAMENTO");
+				
+				for(Produtos ListaCarrinho:Carrinho) {
+								
+				ListaCarrinho.Pagamento(valorCompra);
 
+			
+				}
+				System.out.println("\n\nVocê acaba de adquirir um produto ꕥ CHERIN DE CAPIM ꕥ Agradecemos a preferência! ");
+				
+				
+			}
+			
+		}
+			
+			while (continuaCompra=='S');
+		
 			break;
+		
 
 		case '2':
 			System.out.println("WIP");
@@ -68,73 +154,10 @@ public class CadLoja {
 
 		case '3':
 			System.out.println("Volte sempre!!!");
-			break;
+			break;}
 
 		}
-		System.out.println("Deseja continuar?");
-		sOUn = leia.next().toUpperCase().charAt(0);
-
-		System.out.println("CODIGO\t\tR$(UN)\t\tESTOQUE\tPRODUTO");
-		inserirLinha(80, "■");
-
-		for (int x = 0; x < 10; x++) {
-			codigos[x] = x + 1;
-			estoque[x] = 10;
-			System.out.printf("%s\t\t%.2f\t\t%d\t%s\n", codigos[x], precoUnitarios[x], estoque[x],
-					"Aroma " + produtos[x]);
-
-		}
-		inserirLinha(80, "■");
-		System.out.printf("\nInsira o código do produto para adicioná-lo ao carrinho:");
-		escolha = leia.next().toUpperCase();
-		produtoEscolhido = leia.nextInt();
-
-		for (int x = 0; x < 10; x++) {
-			
-			if(codigos[x].equals(escolha)) {
-				produtoEscolhido = x;
-				System.out.printf("O produto selecionado foi: " + x);
-			}
-		}
-
-		System.out.println("Insira a quantidade: ");
-		qntdCompra = leia.nextInt();
-		while (qntdCompra < 0) {
-			System.out.println("Valor incorreto. Digite a quantidade desejada: ");
-			qntdCompra = leia.nextInt();
-		}
-		for (int x = 0; x < estoque[10]; x++) {
-			if (compararProduto.equals(codigos[x])) {
-				if (qntd[x] >= qntdCompra) {
-					carrinho[x] = carrinho[x] + qntdCompra;
-					precoTotal = precoTotal + (qntdCompra * precoUnitarios[x]);
-					qntd[x] = qntd[x] - qntdCompra;
-				} else {
-					System.out.printf("Estoque disponível: %d", qntd[x]);
-				}
-			}
-		}
-		System.out.print("\n\nDeseja mais algo? 'S'para Sim 'N' para Não)? ");
-		continuaCompra = leia.next().toUpperCase().charAt(0);
-		while (continuaCompra != 'S' && continuaCompra != 'N') {
-			System.out.print("\nOpção inválida. Deseja adquirir mais algum produto? 'S' para Sim 'N' para Não. ");
-			continuaCompra = leia.next().toUpperCase().charAt(0);
-		}
-
-		while (continuaCompra == 'S');
-
-		// se não, emite nota fiscal
-
-		System.out.println("\n\t\t\t   NOTA FISCAL");
-		System.out.println("CÓDIGO\t  PRODUTO\t  QUANTIDADE\t  VALOR UN.(R$)\t  VALORITEM(R$)");
-		inserirLinha(80, "■");
-		for (int x = 0; x < estoque; x++) {
-			if (carrinho[x] > 0) {
-				System.out.printf("\n%s\t  %s\t   %d\t\t %.2f\t\t %.2f\n", codigos[x], produtos[x], carrinho[x],
-						precoUnitarios[x], precoUnitarios[x] * carrinho[x]);
-			}
-		}
-	}
+		
 
 	public static String boasVindas(char generoCliente, String nomeCliente) {
 

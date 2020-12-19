@@ -72,10 +72,10 @@ public class BancoPrincipal {
 						System.out.printf("\nOlá " + nomeCliente + "\n");
 						linha();
 						System.out.println("\nQual a operação que deseja fazer? ");
-						System.out.println("[C] CRÉDITO ou [D] DÉBITO");
+						System.out.println("[1] CRÉDITO, [2] DÉBITO,  [3] SALDO ou [4] TALÃO");
 						opcao = leia.next().toUpperCase().charAt(0);
 
-						if (opcao == 'C') {
+						if (opcao == '1') {
 
 							System.out.println(nomeCliente + ", Digite o valor para CREDITAR: ");
 							valor = leia.nextDouble();
@@ -91,13 +91,12 @@ public class BancoPrincipal {
 								break;
 							}
 							
-						} else if (opcao == 'D') {
+						} else if (opcao == '2') {
 							System.out.println(nomeCliente + ", Digite o valor para DEBITAR:");
 							valor = leia.nextDouble();
 							corrente.debito(valor);
 
 							System.out.println("Seu SALDO atual é: " + corrente.getSaldo());
-							
 							System.out.println("Deseja Continuar?");
 							System.out.println("Para [S]Sim ou [S]Não");
 							opcaoSimouNao = leia.next().toUpperCase().charAt(0);
@@ -110,21 +109,18 @@ public class BancoPrincipal {
 						
 						//COMEÇA CODIGO TALAO
 						
-						else if (opcao == 'T') {
+						else if (opcao == '4') {
 							
-							System.out.println("IMPRESSÃO DE TALÃO: S para Sim ou N para Não: ");
-							opcaoTalao = leia.next().toUpperCase().charAt(0);
-						
-							if  (opcaoTalao == 'S' ) {
-								
-								System.out.println("insira a quantidade de talões desejada: ");
-								qntdTalao = leia.nextInt();
-							}
+							System.out.println("IMPRESSÃO DE TALÃO:") ;
+							System.out.printf("insira a quantidade de talões desejada: ");
+							qntdTalao = leia.nextInt();
+							corrente.getQntdTalao();
+							
+															
 						}									
 						 else {
 								System.out.println("OPERAÇÃO INVÁLIDA!! ");
-								System.out.println("Procure seu gerente");
-							}
+						 }
 						
 						break;
 						}
@@ -132,7 +128,7 @@ public class BancoPrincipal {
 					case 3:
 						break;
 						
-					case 4:
+					/*case 4:
 						//COMEÇA CODIGO EMPRESTIMO
 						ContaEmpresa empresa = new ContaEmpresa(numeroConta, 10000); //VALOR DE LIMITE EMPRESTIMO É 10 MIL REAIS
 
@@ -227,7 +223,7 @@ public class BancoPrincipal {
 						
 						break;
 						
-					case 5:
+					*/case 5:
 						break;
 						
 					case 6:
@@ -261,7 +257,7 @@ public class BancoPrincipal {
 		public static void sair() 
 		{
 			
-			System.out.println("\nGRADECEMOS POR USAR O G5 BANK, ATÉ A PRÓXIMA");
+			System.out.println("\nAGRADECEMOS POR USAR O G5 BANK, ATÉ A PRÓXIMA");
 		
 		}
 		

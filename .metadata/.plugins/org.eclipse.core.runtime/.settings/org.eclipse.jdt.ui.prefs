@@ -1,7 +1,8 @@
-content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"/>
+content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"><lhs name\="loja.CadastroPessoa"><rhs name\="loja.Cliente"/></lhs><lhs name\="loja.Cliente"><rhs name\="loja.Cliente"/></lhs></history>
 content_assist_number_of_computers=12
 eclipse.preferences.version=1
 org.eclipse.jdt.ui.formatterprofiles.version=20
+org.eclipse.jdt.ui.text.custom_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates><template autoinsert\="true" context\="java" deleted\="false" description\="scanner" enabled\="true" name\="leia">Scanner leia \= new Scanner (System.in);</template></templates>
 spelling_locale_initialized=true
 useAnnotationsPrefPage=true
 useQuickDiffPrefPage=true

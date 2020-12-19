@@ -6,11 +6,18 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
+		<item key="selection" value="AR"/>
 		<list key="findhistory">
+			<item value="Ar"/>
+			<item value="CHEIRO"/>
+			<item value="lista"/>
 			<item value="package loja;"/>
 			<item value="import java.util.Random;"/>
 		</list>
 		<list key="replacehistory">
+			<item value="AR"/>
+			<item value="Ar"/>
+			<item value="ListaProdutos"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

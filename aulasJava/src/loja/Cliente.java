@@ -1,5 +1,6 @@
 package loja;
 
+import java.util.Scanner;
 
 public class Cliente extends CadastroPessoa{
 	
@@ -13,7 +14,19 @@ public class Cliente extends CadastroPessoa{
 	}
 	
 	//METODOS AQUI
-	public void corrigeCpf() {
-		
+	
+	public String getCpf() {
+		return cpf;
 	}
+	public String CPF() {
+		
+		Scanner leia = new Scanner(System.in);	
+		
+		System.out.println("Insira seu CPF: ");
+		this.cpf = leia.nextLine();
+		return this.cpf;
+	}
+	
+	
+	
 }

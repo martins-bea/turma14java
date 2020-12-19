@@ -16,9 +16,32 @@ public abstract class CadastroPessoa {
 	}
 	
 	//METODO AQUI
-	public void voltaIdade() {
-		
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public char getGenero() {
+		return genero;
+	}
+
+	public void setGenero(char genero) {
+		this.genero = genero;
+	}
+
+	public int getAnoNascimento() {
+		return  dataNasc;
+	}
+
+	public void setAnoNascimento(int dataNasc) {
+		this.dataNasc =  dataNasc;
 	}
 	
-	
+	public int retornaIdade(int anoAtual) {
+		return (anoAtual - this.dataNasc);
+	}
 }
