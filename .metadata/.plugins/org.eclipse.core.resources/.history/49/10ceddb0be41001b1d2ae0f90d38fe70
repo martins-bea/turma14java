@@ -165,4 +165,8 @@ public class Produtos {
 		this.estoqueProduto = this.estoqueProduto - quantidadeVenda;
 	}
 
+	public void somarEstoque(int itemSoma) {
+		this.estoqueProduto = this.estoqueProduto + itemSoma;
+	}
+
 }
