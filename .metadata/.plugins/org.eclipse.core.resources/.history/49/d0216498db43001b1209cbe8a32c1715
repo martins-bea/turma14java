@@ -1,0 +1,39 @@
+package loja;
+
+public abstract class CadastroPessoa {
+
+	//ATRIBUTOS
+	private String nome;
+	private int dataNasc;
+	
+	//CONSTRUTOR
+	public CadastroPessoa(String nome, int dataNasc) {
+		super();
+		this.nome = nome;
+		this.dataNasc = dataNasc;
+	}
+	
+	//METODO AQUI
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	
+
+	public int getAnoNascimento() {
+		return  dataNasc;
+	}
+
+	public void setAnoNascimento(int dataNasc) {
+		this.dataNasc =  dataNasc;
+	}
+	
+	public int retornaIdade(int anoAtual) {
+		return (anoAtual - this.dataNasc);
+	}
+}

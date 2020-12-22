@@ -8,6 +8,7 @@
 		<item key="isRegEx" value="false"/>
 		<item key="selection" value="AR"/>
 		<list key="findhistory">
+			<item value="notaFiscal(valorTotalProduto, Carrinho);"/>
 			<item value="Ar"/>
 			<item value="CHEIRO"/>
 			<item value="lista"/>
@@ -15,6 +16,7 @@
 			<item value="import java.util.Random;"/>
 		</list>
 		<list key="replacehistory">
+			<item value="notaFisc"/>
 			<item value="AR"/>
 			<item value="Ar"/>
 			<item value="ListaProdutos"/>
