@@ -199,7 +199,7 @@ public class CadLoja {
 								System.out.println("Quantidade total do estoque: " + ProdutosLoja.getestoqueProduto());
 
 							}
-
+							
 							else if (quantidadeAlterar < 0 || quantidadeAlterar > ProdutosLoja.getestoqueProduto()) {
 								System.out.println(" Quantidade inválida ");
 							}
@@ -207,16 +207,16 @@ public class CadLoja {
 					}
 
 				}
-
+				
 				System.out.println("Deseja continuar? [S] para Sim, [N] para Não: ");
 				sair = leia.next().toUpperCase().charAt(0);
 
 			}
 
 			while (sair == 'S');
+			
 
-			System.out.println("Você atulizou o estoque.");
-
+			
 			break;
 
 		case '3':

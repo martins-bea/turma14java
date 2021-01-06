@@ -184,38 +184,15 @@ public class CadLoja {
 							System.out.println("Quantidade total do estoque: " + ProdutosLoja.getestoqueProduto());
 
 						}
-
-						if (continuaAlterar == 'S') {
-
-							inserirLinha(80, "■");
-							System.out
-									.println("Insira a quantidade a subtrair no estoque do produto: " + produtoAlterar);
-							quantidadeAlterar = leia.nextInt();
-
-							if (quantidadeAlterar <= ProdutosLoja.getestoqueProduto()) {
-
-								ProdutosLoja.subtraiEstoque(quantidadeAlterar);
-
-								System.out.println("Quantidade total do estoque: " + ProdutosLoja.getestoqueProduto());
-
-							}
-
-							else if (quantidadeAlterar < 0 || quantidadeAlterar > ProdutosLoja.getestoqueProduto()) {
-								System.out.println(" Quantidade inválida ");
-							}
-						}
 					}
 
 				}
-
-				System.out.println("Deseja continuar? [S] para Sim, [N] para Não: ");
-				sair = leia.next().toUpperCase().charAt(0);
 
 			}
 
 			while (sair == 'S');
 
-			System.out.println("Você atulizou o estoque.");
+			System.out.println(" Você finalizou ");
 
 			break;
 

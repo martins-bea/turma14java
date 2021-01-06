@@ -92,9 +92,5 @@ public class Produtos {
 	public void subtraiEstoque(int quantidadeVenda) {
 		this.estoqueProduto = this.estoqueProduto - quantidadeVenda;
 	}
-	
-	public void adicionarEstoque(int quantidadeAdicionar) {
-		this.estoqueProduto = this.estoqueProduto + quantidadeAdicionar;
-	}
 
 }

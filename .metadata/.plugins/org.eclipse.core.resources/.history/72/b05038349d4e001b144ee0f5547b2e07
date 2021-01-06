@@ -15,11 +15,11 @@ public class CadLoja {
 
 		// Variaveis
 
-		int quantidadeVenda = 0, notaFiscal = 20200, opcaoPagamento = 0, quantidadeAlterar = 0;
-		String produtoEscolhido, produtoAlterar;
+		int quantidadeVenda = 0, notaFiscal = 20200, opcaoPagamento = 0;
+		String produtoEscolhido;
 		int anoAtual = 2020;
 		double valorCompra = 0, valorTotalProduto = 0;
-		char continuaCompra = 0, sair = 0, continuaAlterar = 0;
+		char continuaCompra;
 
 		// ARRAYLIST AQUI ListaProdutos.add(new Produto("Ar-01", "Capim-Limão", 10.00,
 		// 10))
@@ -103,13 +103,15 @@ public class CadLoja {
 
 							valorCompra += quantidadeVenda * ProdutosLoja.getprecoUnidade();
 
-							ProdutosLoja.setValorTotalProduto(ProdutosLoja.getprecoUnidade() * quantidadeVenda);
+							valorTotalProduto = ProdutosLoja.getprecoUnidade() * quantidadeVenda;
 
 							System.out.println("\nO valor total é R$: " + valorCompra);
 							inserirLinha(80, "■");
-
+							
+							
+							
 							Carrinho.add(new Produtos(ProdutosLoja.getnomeProduto(), quantidadeVenda,
-									ProdutosLoja.getprecoUnidade(), ProdutosLoja.getValorTotalProduto()));
+									ProdutosLoja.getprecoUnidade(), valorTotalProduto));
 
 						}
 
@@ -148,75 +150,7 @@ public class CadLoja {
 			break;
 
 		case '2':
-
-			do {
-
-				System.out.println("      GERENCIAMENTO DE ESTOQUE\n");
-
-				System.out.println("CÓDIGO \t      PRODUTO \t       ESTOQUE    ");
-
-				for (Produtos ProdutosLoja : ListaProdutos) {
-					System.out.printf("%s \t %s \t %d \t \n", ProdutosLoja.getcodigoProduto(),
-							ProdutosLoja.getnomeProduto(), ProdutosLoja.getestoqueProduto());
-
-				}
-
-				inserirLinha(80, "■");
-				System.out.printf("\nInsira o código do produto para alterá-lo:");
-				produtoAlterar = leia.next().toUpperCase();
-
-				for (Produtos ProdutosLoja : ListaProdutos) {
-
-					if (ProdutosLoja.getcodigoProduto().equals(produtoAlterar)) {
-
-						System.out.printf("\nVocê deseja Adicionar (A) ou subtrair(S) estoque do produto?");
-						continuaAlterar = leia.next().toUpperCase().charAt(0);
-
-						if (continuaAlterar == 'A') {
-
-							inserirLinha(80, "■");
-							System.out.println(
-									"Insira a quantidade a adicionar no estoque do produto: " + produtoAlterar);
-							quantidadeAlterar = leia.nextInt();
-
-							ProdutosLoja.adicionarEstoque(quantidadeAlterar);
-
-							System.out.println("Quantidade total do estoque: " + ProdutosLoja.getestoqueProduto());
-
-						}
-
-						if (continuaAlterar == 'S') {
-
-							inserirLinha(80, "■");
-							System.out
-									.println("Insira a quantidade a subtrair no estoque do produto: " + produtoAlterar);
-							quantidadeAlterar = leia.nextInt();
-
-							if (quantidadeAlterar <= ProdutosLoja.getestoqueProduto()) {
-
-								ProdutosLoja.subtraiEstoque(quantidadeAlterar);
-
-								System.out.println("Quantidade total do estoque: " + ProdutosLoja.getestoqueProduto());
-
-							}
-
-							else if (quantidadeAlterar < 0 || quantidadeAlterar > ProdutosLoja.getestoqueProduto()) {
-								System.out.println(" Quantidade inválida ");
-							}
-						}
-					}
-
-				}
-
-				System.out.println("Deseja continuar? [S] para Sim, [N] para Não: ");
-				sair = leia.next().toUpperCase().charAt(0);
-
-			}
-
-			while (sair == 'S');
-
-			System.out.println("Você atulizou o estoque.");
-
+			System.out.println("WIP");
 			break;
 
 		case '3':
@@ -233,6 +167,8 @@ public class CadLoja {
 		double imposto, desconto, juros, valorParcela, valorFinal;
 
 		Scanner leia = new Scanner(System.in);
+		
+		
 
 		if (opcaoPagamento == 1) {
 
@@ -240,7 +176,7 @@ public class CadLoja {
 			imposto = (totalCompra - desconto) * 0.09;
 			valorFinal = totalCompra - desconto + imposto;
 
-			notaFiscal(Carrinho);
+			notaFiscal(valorTotalProduto, Carrinho, quantidadeVenda);
 			System.out.printf("Desconto dessa compra: %.2f\nImpostos dessa compra: %.2f\nValor Total: %.2f", desconto,
 					imposto, valorFinal); // nota fiscal
 
@@ -250,8 +186,8 @@ public class CadLoja {
 
 			imposto = totalCompra * 0.09;
 			valorFinal = totalCompra + imposto;
-
-			notaFiscal(Carrinho);
+			
+			notaFiscal(valorTotalProduto, Carrinho, quantidadeVenda);
 
 			System.out.printf("Impostos dessa compra: %.2f\nValor Total: %.2f", imposto, valorFinal);
 
@@ -260,8 +196,8 @@ public class CadLoja {
 			juros = totalCompra * 0.05;
 			imposto = (totalCompra + juros) * 0.09;
 			valorFinal = totalCompra + juros + imposto;
-
-			notaFiscal(Carrinho);
+			
+			notaFiscal(valorTotalProduto, Carrinho,quantidadeVenda);
 
 			System.out.printf("Juros dessa compra: %.2f\nImpostos dessa compra: %.2f\nValor Total: %.2f", juros,
 					imposto, valorFinal);
@@ -279,7 +215,7 @@ public class CadLoja {
 				imposto = (totalCompra + juros) * 0.09;
 				valorFinal = totalCompra + juros + imposto;
 				valorParcela = valorFinal / quantidadeParcelas;
-				notaFiscal(Carrinho);
+				notaFiscal(valorTotalProduto, Carrinho,quantidadeVenda);
 
 				System.out.printf(
 						"Juros dessa compra: %.2f\nImpostos dessa compra: %.2f\nValor Total: %.2f em 2 parcelas de: %.2f",
@@ -293,7 +229,7 @@ public class CadLoja {
 				imposto = (totalCompra + juros) * 0.09;
 				valorFinal = totalCompra + juros + imposto;
 				valorParcela = valorFinal / quantidadeParcelas;
-				notaFiscal(Carrinho);
+				notaFiscal(valorTotalProduto, Carrinho,quantidadeVenda);
 
 				System.out.printf(
 						"Juros dessa compra: %.2f\nImpostos dessa compra: %.2f\nValor Total: %.2f em 3 parcelas de: %.2f",
@@ -307,23 +243,25 @@ public class CadLoja {
 
 	}
 
-	public static void notaFiscal(List<Produtos> Carrinho) {
+	public static void notaFiscal(double valorTotalProduto, List<Produtos> Carrinho, int quantidadeVenda) {
 
-		inserirLinha(80, "■");
+		inserirLinha(80,"■");
 		System.out.println("                        NOTA FISCAL ");
-		inserirLinha(80, "■");
-		System.out.println("Produto\t          Quantidade\t Preço UN\tValor Total");
-
+		inserirLinha(80,"■");
+		System.out.println("Produto\t          Quantidade\t Preço UN\t           Valor Total");
+		
 		for (Produtos ProdutosLoja : Carrinho) {
-
-			System.out.printf("%s \t %d \t %.2f \t\t %.2f \n", ProdutosLoja.getnomeProduto(),
-					ProdutosLoja.getquantidadeVenda(), ProdutosLoja.getprecoUnidade(),
-					ProdutosLoja.getValorTotalProduto());
+			
+			
+			System.out.printf("%s \t %d \t %.2f \t %.2f \n", ProdutosLoja.getnomeProduto(),
+					ProdutosLoja.getquantidadeVenda(), ProdutosLoja.getprecoUnidade(), valorTotalProduto);
 
 		}
-
-		inserirLinha(80, "■");
+	
+		inserirLinha(80,"■");
 	}
+	
+	
 
 	public static String boasVindas(char generoCliente, String nomeCliente) {
 
