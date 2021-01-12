@@ -1,0 +1,113 @@
+package Heranca_Polimorfismo;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Scanner;
+
+
+public class ProgramaEstoqueLoja {
+
+	public static void main(String[] args) {
+		
+		
+		Arraylist<String> ListaProdutosEstoque = new Arraylist(String)<>; 
+		
+		ListaProdutosEstoque.add(new Itens("Caneca"));
+		ListaProdutosEstoque.add(new Itens("Copo"));
+		ListaProdutosEstoque.add(new Produtos("Squeeze"));
+		ListaProdutosEstoque.add(new Produtos("Garrafa "));
+		ListaProdutosEstoque.add(new Produtos("Copo com canudo"));
+		
+		
+		
+		
+	}
+	
+}
+		
+						
+				Scanner leia = new Scanner(System.in);
+				List<Itens> ListaProdutosEstoque = new ArrayList<>();
+			
+
+				// Variaveis
+
+				int quantidadeVenda = 0, notaFiscal = 20200, opcaoPagamento = 0, quantidadeAlterar = 0;
+				String produtoEscolhido, produtoAlterar;
+				int anoAtual = 2020;
+				double valorCompra = 0, valorTotalProduto = 0;
+				char continuaCompra = 0, sair = 0, continuaAlterar = 0;
+
+				// ARRAYLIST AQUI ListaProdutos.add(new Produto("Ar-01", "Capim-Limão", 10.00,
+				// 10))
+
+				ListaProdutosEstoque.add(new Itens("Caneca"));
+				ListaProdutosEstoque.add(new Itens("Copo"));
+				ListaProdutosEstoque.add(new Produtos("Squeeze"));
+				ListaProdutosEstoque.add(new Produtos("Garrafa "));
+				ListaProdutosEstoque.add(new Produtos("Copo com canudo"));
+				
+			
+				Collection<String> produtosEstoque = new ArrayList();
+				Collection<String> produtosAdicionadosEstoque = new ArrayList();
+				Collection<String> produtosRemovidosEstoque = new ArrayList();
+				
+				char opcaoAdicionar, opcaoContinuar, opcaoRemover;
+				
+				produtosEstoque.add("Balde");
+				produtosEstoque.add("Desinfetante");
+				produtosEstoque.add("Detergente");
+				produtosEstoque.add("Esponja");
+				produtosEstoque.add("Sabão neutro");
+				produtosEstoque.add("Vassoura");
+
+				System.out.printf("Lista de produtos: %s",produtosEstoque);
+				System.out.print("\n\nDeseja adicionar produtos ao estoque S/N: ");
+				opcaoAdicionar = leia.next().toUpperCase().charAt(0);
+				if (opcaoAdicionar == 'S')
+				{
+					do 
+					{
+						System.out.print("Digite o nome do produto que deseja adicionar: ");
+						produtosAdicionadosEstoque.add(leia.next());
+					
+						System.out.print("\nDeseja adicionar mais produtos S/N: ");
+						opcaoContinuar = leia.next().toUpperCase().charAt(0);
+					}
+					while (opcaoContinuar == 'S');
+				}
+				System.out.printf("\nLista de produtos Adicionados: %s",produtosAdicionadosEstoque);
+				produtosEstoque.addAll(produtosAdicionadosEstoque);
+				System.out.printf("\nLista de produtos Atualizada: %s",produtosEstoque);
+				
+				produtosEstoque.remove("Sabão neutro");
+				
+				System.out.print("\n\nDeseja remover produtos do estoque S/N: ");
+				opcaoRemover = leia.next().toUpperCase().charAt(0);
+				if (opcaoRemover == 'S')
+				{
+					do 
+					{
+						System.out.print("Digite o nome do produto que deseja remover: ");
+						produtosRemovidosEstoque.add(leia.next());
+					
+						System.out.print("\nDeseja remover mais produtos S/N: ");
+						opcaoContinuar = leia.next().toUpperCase().charAt(0);
+					}
+					while (opcaoContinuar == 'S');
+				}
+				System.out.printf("\nLista de produtos Removidos: %s",produtosRemovidosEstoque);
+				produtosEstoque.removeAll(produtosRemovidosEstoque);
+						
+				System.out.println("\nLista de produtos Atualizada:");
+				for (String produto : produtosEstoque)
+				{
+					System.out.printf("%s\n",produto);
+				}
+			}
+		
+		
+	}
+
+}}
