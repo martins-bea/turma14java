@@ -8,6 +8,7 @@
 		<item key="isRegEx" value="false"/>
 		<item key="selection" value="AR"/>
 		<list key="findhistory">
+			<item value="package BancoG5;"/>
 			<item value="notaFiscal(valorTotalProduto, Carrinho);"/>
 			<item value="Ar"/>
 			<item value="CHEIRO"/>

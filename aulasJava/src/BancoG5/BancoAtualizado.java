@@ -50,7 +50,7 @@ public class BancoAtualizado {
 					switch(menu) {
 					
 					case 1:
-						ContaCorrente = new ContaCorrente(numeroConta); //VALOR DE LIMITE EMPRESTIMO É 10 MIL REAIS
+						ContaCorrente = new ContaCorrente(numeroConta); 
 
 						String cpf;
 						char opcao;
@@ -196,7 +196,7 @@ public class BancoAtualizado {
 						
 						//COMEÇA CODIGO EMPRESTIMO
 						
-						empresa.emprestimoSolicitado(double valorEmprestimo);
+						empresa.emprestimoSolicitado(valorEmprestimo=1000);
 						
 						double limiteEmprestimo = 10000;
 						linha();
@@ -225,7 +225,7 @@ public class BancoAtualizado {
 						}
 					}
 					
-					//TERMINA CODIGO EMPRESTIMO
+			
 						
 						break;
 						
@@ -261,8 +261,6 @@ public class BancoAtualizado {
 			}
 	}
 		
-
-		//FUNCOES
 		
 		public static void sair() 
 		{
