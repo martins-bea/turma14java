@@ -1,18 +1,15 @@
-package Banco;
+package BancoG5;
 
 public class ContaCorrente extends Conta{
 
+	public ContaCorrente(int numeroConta) {
+		super(numeroConta);
+		// TODO Auto-generated constructor stub
+	}
 	private int talaoLimite=3;
 	private int qntdTalao;
 	private int talaooutrodia;
 	
-	
-	public ContaCorrente(int talaoLimite, int qntdTalao) {
-		this.talaoLimite = talaoLimite;
-		this.qntdTalao = 0;
-	}
-	
-
 	public int getTalaoLimite() {
 		return talaoLimite;
 	}
